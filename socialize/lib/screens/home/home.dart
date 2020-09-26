@@ -1,12 +1,18 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:socialize/screens/services/auth.dart';
+import 'package:socialize/screens/services/database.dart';
+import 'package:provider/provider.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:socialize/screens/home/info_list.dart';
 
 class Home extends StatelessWidget {
   final AuthService _auth = AuthService();
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return StreamProvider<QuerySnapshot>.value(
+      value: DatabaseService().stuffs,
       child: Scaffold(
         backgroundColor: Colors.blue,
         appBar: AppBar(
@@ -22,6 +28,7 @@ class Home extends StatelessWidget {
                 label: Text('Logout'))
           ],
         ),
+        body: InfoList(),
       ),
     );
   }

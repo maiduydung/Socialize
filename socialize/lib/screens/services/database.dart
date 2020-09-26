@@ -15,4 +15,9 @@ class DatabaseService {
       'stregth': strength,
     });
   }
+
+  //get stream, refresh every time there are any changes in the database
+  Stream<QuerySnapshot> get stuffs {
+    return userCollection.snapshots();
+  }
 }
