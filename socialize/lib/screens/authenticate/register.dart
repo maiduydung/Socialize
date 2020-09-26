@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:socialize/screens/services/auth.dart';
 
 class Register extends StatefulWidget {
+  final Function toggleView;
+  Register({this.toggleView});
   @override
   _RegisterState createState() => _RegisterState();
 }
@@ -21,6 +23,14 @@ class _RegisterState extends State<Register> {
         backgroundColor: Colors.lightBlue,
         elevation: 0.0,
         title: Text('Sign up to Socialize'),
+        actions: <Widget>[
+          FlatButton.icon(
+              onPressed: () {
+                widget.toggleView();
+              },
+              icon: Icon(Icons.person),
+              label: Text('Sign in')),
+        ],
       ),
       body: Container(
         padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
