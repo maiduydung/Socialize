@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:socialize/screens/services/auth.dart';
+import 'package:socialize/shared/constants.dart';
 
 class Register extends StatefulWidget {
   final Function toggleView;
@@ -45,6 +46,7 @@ class _RegisterState extends State<Register> {
                   height: 20.0,
                 ),
                 TextFormField(
+                  decoration: textInputDecoration.copyWith(hintText: 'Email'),
                   validator: (val) => val.isEmpty ? "Enter email" : null,
                   onChanged: (val) {
                     setState(() => email = val);
@@ -54,6 +56,8 @@ class _RegisterState extends State<Register> {
                   height: 20.0,
                 ),
                 TextFormField(
+                  decoration:
+                      textInputDecoration.copyWith(hintText: 'Password'),
                   validator: (val) => val.length < 6
                       ? "Enter more than 6 characters for password"
                       : null,
