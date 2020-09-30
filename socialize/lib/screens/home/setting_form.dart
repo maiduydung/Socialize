@@ -54,7 +54,7 @@ class _SettingFormState extends State<SettingForm> {
                     items: sugars.map((sugar) {
                       return DropdownMenuItem(
                         value: sugar,
-                        child: Text('$sugar sugars'),
+                        child: Text('$sugar dollar'),
                       );
                     }).toList(),
                     onChanged: (val) => setState(() => _currentSugars = val),
@@ -78,6 +78,14 @@ class _SettingFormState extends State<SettingForm> {
                         style: TextStyle(color: Colors.white),
                       ),
                       onPressed: () async {
+                        if (_formKey.currentState.validate()) {
+                          await DatabaseService(uid: user.uid).updateUserData(
+                              _currentSugars ?? userData.sugar,
+                              _currentName ?? userData.name,
+                              _currentStrength ?? userData.strength);
+                        }
+                        Navigator.pop(context);
+
                         print(_currentName);
                         print(_currentSugars);
                         print(_currentStrength);

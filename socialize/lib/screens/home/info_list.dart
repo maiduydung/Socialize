@@ -12,7 +12,7 @@ class InfoList extends StatefulWidget {
 class _InfoListState extends State<InfoList> {
   @override
   Widget build(BuildContext context) {
-    final stuffs = Provider.of<List<Stuff>>(context);
+    final stuffs = Provider.of<List<Stuff>>(context ?? []);
     // stuffs.forEach((stuff) {
     //   print(stuff.name);
     //   print(stuff.sugars);
