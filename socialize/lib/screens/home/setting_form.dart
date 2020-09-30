@@ -48,6 +48,17 @@ class _SettingFormState extends State<SettingForm> {
               onChanged: (val) => setState(() => _currentSugars = val),
             ),
             //slider
+            Slider(
+              activeColor: Colors.blue[_currentStrength ?? 100],
+              inactiveColor: Colors.blue[_currentStrength ?? 100],
+              min: 100.0,
+              max: 900.0,
+              divisions: 8,
+              onChanged: (val) =>
+                  setState(() => _currentStrength = val.round()),
+              value: (_currentStrength ?? 100).toDouble(),
+            ),
+
             RaisedButton(
                 color: Colors.pink[400],
                 child: Text(
