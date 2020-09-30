@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:socialize/models/stuff.dart';
+import 'package:socialize/models/users.dart';
 
 class DatabaseService {
   final String uid;
@@ -31,5 +32,20 @@ class DatabaseService {
   //get stream, refresh every time there are any changes in the database
   Stream<List<Stuff>> get stuffs {
     return userCollection.snapshots().map(_stuffListFromSnapshot);
+  }
+
+  //get user doc stream
+  Stream<UserData> get userData {
+    return userCollection.document(uid).snapshots().map(_userDataFromSnapShot);
+  }
+
+  //user data from snapshot
+  UserData _userDataFromSnapShot(DocumentSnapshot snapshot) {
+    return UserData(
+      uid: uid,
+      name: snapshot.data['name'],
+      sugar: snapshot.data['sugars'],
+      strength: snapshot.data['strength'],
+    );
   }
 }
