@@ -17,7 +17,7 @@ class StuffTile extends StatelessWidget {
             backgroundColor: Colors.red[stuff_item.strength],
           ),
           title: Text(stuff_item.name),
-          subtitle: Text('Needs ${stuff_item.sugars} sugars'),
+          subtitle: Text('Needs ${stuff_item.sugars} dollars'),
         ),
       ),
     );
